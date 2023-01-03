@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">Library...</div>
+      <div class="intro">
+        Add as many books as you please! Click the button to begin.
+      </div>
+    </div>
+    <div>
+      <button id="addbtn">Add New Book</button>
+      <button id="delbtn">Delete Books</button>
+      <button id="hiddendelbtn" hidden>Delete Selected Books</button>
+    </div>
+    <div class="listbar">Book List:</div>
+    <div id="hiddenform" hidden>
+      <form>
+        <ul>
+          <li><input type="text" placeholder="Book Title" id="title" /></li>
+          <li><input type="text" placeholder="Author" id="author" /></li>
+          <li><input type="number" placeholder="Pages" id="page" /></li>
+          <li>
+            <select id="Reading Status">
+              <option value="" disabled selected>
+                Select your reading status
+              </option>
+              <option>Read</option>
+              <option>Not Read</option>
+            </select>
+          </li>
+          <fieldset>
+            <li><input type="button" value="Submit" id="submitbtn" /></li>
+            <li><input type="reset" id="resetbtn" value="Reset" /></li>
+            <li><input type="button" id="closebtn" value="Close" /></li>
+          </fieldset>
+        </ul>
+      </form>
+    </div>
+    <div id="card_container">
+      <!-- <div class="card" hidden>
+        <ul>
+          <input type="checkbox" class="delcheck" hidden />
+          <li>Book Title: The Bluest Eye</li>
+          <li>Author: Toni Morrison</li>
+          <li>226 Pages</li>
+          <li>Reading Status: Not Read</li>
+        </ul>
+      </div> -->
+    </div>
+  </body>
+</html>
