@@ -21,6 +21,8 @@ function addBookToLibrary(obj) {
 const add_new = document.getElementById("addbtn");
 const hidden_form = document.getElementById("hiddenform");
 const submit_btn = document.getElementById("submitbtn");
+const allCheckBoxes = document.getElementsByClassName("delcheck");
+let delBooks = [];
 
 //Adding event listenenr for clicking add a new book
 add_new.addEventListener("click", () => {
@@ -43,7 +45,7 @@ function checkPress(event) {
 
   console.log(newBook);
 
-  //Selecting card heirarchy
+  //Selecting and setting card heirarchy in the DOM
   const cardContainer = document.getElementById("card_container");
   const card = document.createElement("div");
   card.classList.add("card");
@@ -66,6 +68,7 @@ function checkPress(event) {
   }
 }
 
+// Function for the clsoe button of the form. It resets the fields and hides the form when clicked
 document.getElementById("closebtn").addEventListener("click", () => {
   document.getElementById("resetbtn").click();
   hidden_form.setAttribute("hidden", true);
@@ -73,6 +76,7 @@ document.getElementById("closebtn").addEventListener("click", () => {
 
 // let del_list = document.getElementsByClassName("delcheck");
 
+// when this button is clicked, the cards gain a checbox attribut that allows for multiselection
 document.getElementById("delbtn").addEventListener("click", () => {
   let del_list = document.getElementsByClassName("delcheck");
   for (i = 0; i < del_list.length; i++) {
@@ -83,8 +87,18 @@ document.getElementById("delbtn").addEventListener("click", () => {
   document.getElementById("hiddendelbtn").removeAttribute("hidden");
 });
 
+// allCheckBoxes.addEventListener("click", () => {
+//   for (i = 0; i < allCheckBoxes.length; i++) {
+//     if (allCheckBoxes[i].checked == true) {
+//       delBooks.push(allCheckBoxes[i]);
+//     }
+//   }
+// });
+
+
+// this button is responsible for deleting selected items
 document.getElementById("hiddendelbtn").addEventListener("click", () => {
-  let del_list = document.getElementsByClassName("delcheck");
+  let del_list = Array.from(document.getElementsByClassName("delcheck")).filter(e => e.checked==true);
   console.log(del_list);
   for (i = 0; i < del_list.length; i++) {
     if (del_list[i].checked === true) {
@@ -97,12 +111,13 @@ document.getElementById("hiddendelbtn").addEventListener("click", () => {
     }
   }
 
-  if (myLibrary.length !== del_list.length) {
-    document.getElementById("hiddendelbtn").click();
-    console.log("clicked");
-  } else {
-    resetDelScreen();
-  }
+  // if (myLibrary.length !== del_list.length) {
+  //   document.getElementById("hiddendelbtn").click();
+  //   console.log("clicked");
+  // } else {
+  //   resetDelScreen();
+  // }
+  resetDelScreen()
 });
 
 function resetDelScreen() {
